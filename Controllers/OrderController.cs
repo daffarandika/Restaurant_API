@@ -19,7 +19,7 @@ namespace WebApplication1.Controllers
         {
             if (member != null)
             {
-                return Ok(_context.Headorders.Where(h => h.Member.Name.Contains(member)).Select(h => new OrderDTO
+                return Ok(_context.Headorders.Where(h => h.Member.Name.ToLower().Contains(member)).Select(h => new OrderDTO
                 {
                     orderID = h.OrderId,
                     member = h.Member.Name,
