@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
@@ -15,6 +16,7 @@ namespace WebApplication1.Controllers
             _context = context;
         }
         [HttpGet]
+        [Authorize(Roles = "ADMIN, CASHIER")]
         public ActionResult<List<OrderDTO>> Get(string? member)
         {
             if (member != null)
